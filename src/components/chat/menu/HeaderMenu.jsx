@@ -10,12 +10,14 @@ color: #4A4A4A;
 `
 
 
-const HeaderMenu = () => {
+const HeaderMenu = ({openDrawwer,setOpenDrawwer}) => {
     const [open, setOpen] = useState(null)
     const handleClose = ()=>{
         setOpen(null);
     }
-
+    const toggleDrawer = ()=>{
+      setOpenDrawwer(!openDrawwer);
+    }
     const handleClick =(e)=>{
        
         setOpen(e.currentTarget);
@@ -41,7 +43,7 @@ const HeaderMenu = () => {
         }}
      
       >
-        <MenuOption onClick={handleClose}>Profile</MenuOption>
+        <MenuOption onClick={()=>{handleClose(); toggleDrawer();}}>Profile</MenuOption>
         <MenuOption onClick={handleClose}>My account</MenuOption>
         <MenuOption onClick={handleClose}>Logout</MenuOption>
       </Menu>

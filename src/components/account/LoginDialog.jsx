@@ -1,5 +1,5 @@
 import { Box, Dialog, List, ListItem, Typography } from '@mui/material'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { qrCodeImage } from '../constants/data'
 import styled from '@emotion/styled'
 import { GoogleLogin } from '@react-oauth/google'
@@ -49,8 +49,11 @@ const Styledlist = styled(List)`
 }
 `
 const LoginDialog = () => {
-    const {setAccount} = useContext(AccountContext)
+    const {setAccount,account} = useContext(AccountContext)
     
+    useEffect(() => {
+      addUser(account)
+    }, [])
     
     const onLoginSuccess = async(res)=>{
          const decoded = jwt_decode(res.credential)

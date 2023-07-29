@@ -8,6 +8,7 @@ import { AccountContext } from '../context/AccountProvider'
 
 const Component = styled(Box)`
 display:flex;
+overflow: hidden;
 `
 
 const  LeftComponent = styled(Box)`

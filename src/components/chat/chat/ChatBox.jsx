@@ -21,7 +21,7 @@ const ChatBox = () => {
   
    console.log(conversation._id);
   }
-  getConversationDetails();
+getConversationDetails();
 
  },[person.sub,conversation._id])
  

@@ -5,6 +5,7 @@ import Conversation from './Conversation';
 import { AccountContext } from '../../context/AccountProvider';
 import styled from '@emotion/styled';
 
+
 const Component = styled(Box)`
 height:81vh;
 overflow: overlay;
@@ -18,8 +19,8 @@ opacity:.6;
 `
 const Conversations = ({text}) => {
    const [users, setusers] = useState([]) 
-   const {account} = useContext(AccountContext);
-   
+   const {account,socket,setActiveUsers} = useContext(AccountContext);
+ 
    
    useEffect(() => {
 const fetchData = async()=>{
@@ -34,6 +35,15 @@ setusers(filteredData);
 fetchData();
 
 }, [text]);
+
+useEffect(() => {
+  
+  socket.current.emit("addUsers",account);
+  socket.current.on("getUsers",users=>{
+    setActiveUsers(users)
+  })
+}, [account])
+
   return (
   <Component>
     {

@@ -16,6 +16,7 @@ box-shadow: none;
 const Component = styled(Box)`
 height:100vh;
 background:#DCDCDC;
+overflow: hidden;
 `
 const Messenger = () => {
   const {account} = useContext(AccountContext)
